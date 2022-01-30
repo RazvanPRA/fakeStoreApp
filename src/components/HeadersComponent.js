@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import { BLACK_TRANSPARENT } from '../const/COLORS';
 import { SPACE_LARGE, SPACE_MEDIUM, SPACE_XXLARGE } from '../const/LAYOUT';
-import { SUB_TITLE, TITLE } from '../const/CONTENT';
+import { SUB_TITLE, TITLE } from '../const/CONTENT/HomeContent';
 
 const HeadersComponent = () => {
     return (

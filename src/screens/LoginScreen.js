@@ -10,7 +10,7 @@ import {
 import useAuthentication from '../hooks/useAuthentication';
 import BackgroundImage from '../assets/Image.jpg';
 import { backgroundColorCard, BLACK } from '../const/COLORS';
-import { PASSWORD, SING_IN, USER_SING_IN } from '../const/CONTENT';
+import { PASSWORD, SING_IN, USER_SING_IN } from '../const/CONTENT/LogInContent';
 import {
     FONT_XLARGE,
     FONT_XXLARGE,

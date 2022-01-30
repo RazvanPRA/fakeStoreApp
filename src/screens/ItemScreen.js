@@ -15,7 +15,7 @@ import {
     textColor,
     WHITE,
 } from '../const/COLORS';
-import { MAX_RATE } from '../const/CONTENT';
+import { MAX_RATE } from '../const/CONTENT/ItemContent';
 import {
     FONT_LARGE,
     FONT_MEDIUM,

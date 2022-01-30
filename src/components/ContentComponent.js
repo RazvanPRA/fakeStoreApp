@@ -57,6 +57,5 @@ const styles = StyleSheet.create({
         flexGrow: 1,
         paddingTop: SPACE_LARGE,
         paddingHorizontal: SPACE_SMALL,
-        justifyContent: 'space-between',
     },
 });

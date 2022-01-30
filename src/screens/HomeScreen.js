@@ -1,18 +1,37 @@
-import { ScrollView, StyleSheet, View } from 'react-native';
-import React, { useState } from 'react';
+import { StyleSheet, View } from 'react-native';
+import React from 'react';
 import HeadersComponent from '../components/HeadersComponent';
 import SearchComponent from '../components/SearchComponent';
 import ContentComponent from '../components/ContentComponent';
 import useGetProducts from '../hooks/useGetProducts';
 
 const HomeScreen = ({ navigation }) => {
-    const [searchBar, setSearchBar] = useState(null);
-    const { products, searchTerm, loading, setSearchTerm } = useGetProducts();
+    const {
+        products,
+        searchTerm,
+        loading,
+        categories,
+        selectedCategory,
+        setSelectedCategory,
+        sortList,
+        selectedSort,
+        setSelectedSort,
+        setSearchTerm,
+    } = useGetProducts();
 
     return (
         <View style={styles.content}>
             <HeadersComponent />
-            <SearchComponent searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+            <SearchComponent
+                categories={categories}
+                searchTerm={searchTerm}
+                setSearchTerm={setSearchTerm}
+                selectedCategory={selectedCategory}
+                setSelectedCategory={setSelectedCategory}
+                selectedSort={selectedSort}
+                setSelectedSort={setSelectedSort}
+                sortList={sortList}
+            />
             <ContentComponent
                 loading={loading}
                 products={products}

@@ -2,7 +2,7 @@ import React from 'react';
 import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 import BackgroundImage from '../assets/Image.jpg';
 import { backgroundColorCard, BLACK } from '../const/COLORS';
-import { SING_IN } from '../const/CONTENT';
+import { SING_IN } from '../const/CONTENT/LogInContent';
 import {
     FONT_XLARGE,
     FONT_XXLARGE,
