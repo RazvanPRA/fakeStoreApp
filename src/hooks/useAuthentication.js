@@ -20,19 +20,19 @@ const useAuthentication = () => {
             body: JSON.stringify(userData),
         })
             .then((res) => {
-                console.log({ res: res?.status });
                 if (res?.status !== 200) { setLoginError('Please use a valid username and password'); }
-                return (res.json());
+                return res.json();
             })
             .then((json) => {
                 if (json?.token) {
+                    setIsLoading(false);
                     setIsLoggedIn(json.token);
                 }
             })
             .catch((error) => {
-                console.log({ error: JSON.stringify(error) });
-            })
-            .finally(() => { setIsLoading(false); });
+                setIsLoading(false);
+                console.log(error);
+            });
     };
 
     return {

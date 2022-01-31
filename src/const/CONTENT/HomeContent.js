@@ -4,3 +4,4 @@ export const PLACE_HOLDER = 'Search here';
 export const SEARCH_TITLE = 'Search';
 export const SORT_FILTER_TITLE = 'Sort/Filter';
 export const DONE = 'Done';
+export const EMPTY_STATE = 'No products found matching your search';

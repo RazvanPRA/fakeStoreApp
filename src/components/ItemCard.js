@@ -3,9 +3,10 @@ import {
 } from 'react-native';
 import React from 'react';
 import {
+    FONT_MEDIUM,
     RADIUS_MEDIUM,
-    SCREEN_WIDTH,
     SPACE_SMALL,
+    SPACE_XSMALL,
 } from '../const/LAYOUT';
 import { backgroundColorCard } from '../const/COLORS';
 
@@ -20,57 +21,60 @@ const ItemCard = ({
     rate,
     count,
 }) => (
-    <Pressable
-        onPress={() => {
-            navigation.navigate('ItemScreen', {
-                id: itemId,
-                title,
-                price,
-                description,
-                category,
-                image,
-                rate,
-                count,
-            });
-        }}
-        style={styles.content}
-    >
-        <Image
-            style={styles.image}
-            source={{
-                uri: image,
+    <View style={styles.container}>
+        <Pressable
+            onPress={() => {
+                navigation.navigate('ItemScreen', {
+                    id: itemId,
+                    title,
+                    price,
+                    description,
+                    category,
+                    image,
+                    rate,
+                    count,
+                });
             }}
-        />
-        <View style={styles.container}>
-            <Text>
-                $
-                {' '}
-                {price}
-                {' '}
-                -
-                {' '}
-                {title}
+            style={styles.content}
+        >
+            <View style={styles.imageContainer}>
+                <Image
+                    style={styles.image}
+                    source={{
+                        uri: image,
+                    }}
+                />
+            </View>
+            <Text style={styles.title}>
+                {`$ ${price} - ${title}`}
             </Text>
-        </View>
-    </Pressable>
+        </Pressable>
+    </View>
 );
 
 export default ItemCard;
 
 const styles = StyleSheet.create({
+    container: {
+        width: '50%',
+        padding: SPACE_SMALL,
+    },
     content: {
-        flex: 1,
-        margin: SPACE_SMALL,
-        alignItems: 'center',
-        justifyContent: 'space-evenly',
-        aspectRatio: 1,
         backgroundColor: backgroundColorCard,
         borderRadius: RADIUS_MEDIUM,
     },
-    image: {
-        width: SCREEN_WIDTH / 4.5,
+    imageContainer: {
+        width: '100%',
         aspectRatio: 1,
+    },
+    image: {
+        width: '100%',
+        height: '100%',
         borderRadius: RADIUS_MEDIUM,
-        resizeMode: 'contain',
+        resizeMode: 'cover',
+    },
+    title: {
+        marginTop: SPACE_XSMALL,
+        fontSize: FONT_MEDIUM,
     },
 });

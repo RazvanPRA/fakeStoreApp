@@ -7,6 +7,7 @@ import {
     View,
 } from 'react-native';
 import { BLACK_TRANSPARENT } from '../const/COLORS';
+import { EMPTY_STATE } from '../const/CONTENT/HomeContent';
 import { SPACE_LARGE, SPACE_SMALL } from '../const/LAYOUT';
 import ItemCard from './ItemCard';
 
@@ -22,7 +23,7 @@ const ContentComponent = ({ navigation, products, loading }) => (
                 data={products}
                 ListEmptyComponent={() => (
                     <View>
-                        <Text>No products found matching your search</Text>
+                        <Text>{EMPTY_STATE}</Text>
                     </View>
                 )}
                 keyExtracto={(item) => item?.id}

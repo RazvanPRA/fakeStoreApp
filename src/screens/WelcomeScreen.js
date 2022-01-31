@@ -1,18 +1,16 @@
 import React from 'react';
 import {
-    Image, Pressable, StyleSheet, Text, View,
+    Image, StyleSheet, Text, View,
 } from 'react-native';
 import BackgroundImage from '../assets/Image.jpg';
+import ActionButton from '../components/ActionButton';
 import { backgroundColorCard, BLACK } from '../const/COLORS';
-import { SING_IN } from '../const/CONTENT/LogInContent';
+import { SING_IN, WELCOME_TITLE } from '../const/CONTENT/LogInContent';
 import {
-    FONT_XLARGE,
     FONT_XXLARGE,
-    RADIUS_LARGE,
     SCREEN_HEIGHT,
     SCREEN_WIDTH,
-    SPACE_XSMALL,
-    SPACE_XXLARGE,
+    SPACE_LARGE,
 } from '../const/LAYOUT';
 
 const WelcomeScreen = ({ navigation }) => (
@@ -22,16 +20,15 @@ const WelcomeScreen = ({ navigation }) => (
         </View>
         <View />
         <View>
-            <Text style={styles.welcomeText}>Welcome to the STORE</Text>
+            <Text style={styles.welcomeText}>{WELCOME_TITLE}</Text>
         </View>
-        <Pressable
+        <ActionButton
             onPress={() => {
                 navigation.navigate('LoginScreen');
             }}
-            style={styles.singUp}
-        >
-            <Text style={styles.singUpText}>{SING_IN}</Text>
-        </Pressable>
+            title={SING_IN}
+            style={styles.button}
+        />
     </View>
 );
 
@@ -58,18 +55,8 @@ const styles = StyleSheet.create({
         color: BLACK,
         backgroundColor: backgroundColorCard,
     },
-    singUp: {
-        alignSelf: 'center',
-        marginBottom: SPACE_XXLARGE,
-        width: SCREEN_WIDTH / 3,
-        borderRadius: RADIUS_LARGE,
-        backgroundColor: backgroundColorCard,
-        paddingVertical: SPACE_XSMALL,
+    button: {
+        marginHorizontal: SPACE_LARGE,
     },
-    singUpText: {
-        fontSize: FONT_XLARGE,
-        color: BLACK,
-        fontWeight: 'bold',
-        textAlign: 'center',
-    },
+
 });

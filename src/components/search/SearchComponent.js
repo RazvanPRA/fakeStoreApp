@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, TextInput } from 'react-native';
 import { PLACE_HOLDER, SORT_FILTER_TITLE } from '../../const/CONTENT/HomeContent';
-import { SCREEN_WIDTH, SPACE_MEDIUM, SPACE_XLARGE } from '../../const/LAYOUT';
+import {
+    SCREEN_WIDTH, SPACE_MEDIUM, SPACE_SMALL, SPACE_XLARGE,
+} from '../../const/LAYOUT';
 import SearchButton from './SearchButton';
 
 const SearchComponent = ({
@@ -47,12 +49,13 @@ const styles = StyleSheet.create({
     content: {
         padding: SPACE_XLARGE,
         flexDirection: 'row',
-        justifyContent: 'space-around',
     },
     searchBar: {
+        flex: 1,
         borderWidth: 1,
-        padding: 0,
+        marginRight: SPACE_MEDIUM,
+        paddingLeft: SPACE_SMALL,
+        height: 40,
         fontSize: SPACE_MEDIUM,
-        width: SCREEN_WIDTH / 1.8,
     },
 });

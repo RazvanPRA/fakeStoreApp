@@ -1,5 +1,5 @@
 import {
-    StyleSheet, Text, Pressable, Modal, View, Alert,
+    StyleSheet, Text, Pressable, Modal, View,
 } from 'react-native';
 import React from 'react';
 import {
@@ -30,38 +30,41 @@ const SearchButton = ({
     setSelectedSort,
 }) => (
     <Pressable onPress={onPress} style={styles.button}>
+        <Text style={styles.text}>{title}</Text>
         <Modal
             animationType="slide"
             transparent
             visible={modalVisible}
-            onRequestClose={() => {
-                Alert.alert('Modal has been closed.');
-                setModalVisible(!modalVisible);
-            }}
         >
             <View style={styles.centeredView}>
                 <View style={styles.modalView}>
                     <Text style={styles.modalTitle}>{SORT_FILTER_TITLE}</Text>
-                    {!!categories?.length
-                        && categories?.map((item) => (
-                            <RadioButton
-                                key={item}
-                                item={item}
-                                title={item}
-                                setSelected={setSelectedCategory}
-                                selected={selectedCategory}
-                            />
-                        ))}
-                    {!!sortList?.length
-                        && sortList?.map(({ value, display }) => (
-                            <RadioButton
-                                key={value}
-                                item={value}
-                                title={display}
-                                setSelected={setSelectedSort}
-                                selected={selectedSort}
-                            />
-                        ))}
+                    {!!categories?.length && categories?.map((item) => (
+                        <RadioButton
+                            key={item}
+                            item={item}
+                            title={item}
+                            setSelected={setSelectedCategory}
+                            selected={selectedCategory}
+                            onPress={() => {
+                                if (item === selectedCategory) {
+                                    setSelectedCategory(null);
+                                } else {
+                                    setSelectedCategory(item);
+                                }
+                            }}
+                        />
+                    ))}
+                    {!!sortList?.length && sortList?.map(({ value, display }) => (
+                        <RadioButton
+                            key={value}
+                            item={value}
+                            title={display}
+                            setSelected={setSelectedSort}
+                            selected={selectedSort}
+                            onPress={() => { setSelectedSort(value); }}
+                        />
+                    ))}
                     <Pressable
                         onPress={() => {
                             setModalVisible(!modalVisible);
@@ -73,7 +76,6 @@ const SearchButton = ({
                 </View>
             </View>
         </Modal>
-        <Text style={styles.text}>{title}</Text>
     </Pressable>
 );
 
@@ -81,9 +83,9 @@ export default SearchButton;
 
 const styles = StyleSheet.create({
     button: {
-        flexDirection: 'row',
         backgroundColor: BLACK_TRANSPARENT,
-        padding: SPACE_XSMALL,
+        paddingHorizontal: SPACE_SMALL,
+        justifyContent: 'center',
     },
     centeredView: {
         flex: 1,

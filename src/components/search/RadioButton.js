@@ -12,16 +12,10 @@ import {
 } from '../../const/LAYOUT';
 
 const RadioButton = ({
-    item, title, setSelected, selected,
+    item, title, selected, onPress,
 }) => (
     <Pressable
-        onPress={() => {
-            if (item === selected) {
-                setSelected(null);
-            } else {
-                setSelected(item);
-            }
-        }}
+        onPress={onPress}
         style={styles.filterButton}
     >
         <View

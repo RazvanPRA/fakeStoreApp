@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
     Image,
     Pressable,
@@ -7,6 +7,7 @@ import {
     Text,
     View,
 } from 'react-native';
+import ActionButton from '../components/ActionButton';
 import {
     backgroundColorCard,
     BLACK,
@@ -22,18 +23,13 @@ import {
     SPACE_LARGE,
     SPACE_MEDIUM,
     SPACE_SMALL,
-    SPACE_XXLARGE,
 } from '../const/LAYOUT';
 
-const ItemScreen = ({ navigation, route }) => {
+const ItemScreen = ({ route }) => {
     const {
         title, price, description, category, image, rate, count,
     } = route.params;
-    useEffect(() => {
-        navigation.setOptions({
-            title: 'Back',
-        });
-    });
+
     return (
         <ScrollView
             style={styles.scrollView}
@@ -49,15 +45,10 @@ const ItemScreen = ({ navigation, route }) => {
             <View style={styles.imageBox}>
                 <View style={styles.rateAndCounter}>
                     <Text style={styles.imageTextTop}>
-                        {rate}
-                        /
-                        {MAX_RATE}
+                        {`${rate}/${MAX_RATE}`}
                     </Text>
                     <Text style={styles.imageTextTop}>
-                        (
-                        {count}
-                        {' '}
-                        reviews)
+                        {`(${count} reviews)`}
                     </Text>
                 </View>
                 <View style={styles.category}>
@@ -68,14 +59,8 @@ const ItemScreen = ({ navigation, route }) => {
                 <Text style={styles.titleItem}>{title}</Text>
                 <Text style={styles.descriptionItem}>{description}</Text>
             </View>
-            <Pressable style={styles.buttonBuy}>
-                <Text style={styles.textBuy}>
-                    $
-                    {price}
-                    {' '}
-                    - Buy now
-                </Text>
-            </Pressable>
+            <ActionButton onPress={() => { console.log('buy now was pressed'); }} title={`$${price} - Buy now`} />
+
         </ScrollView>
     );
 };
@@ -124,19 +109,8 @@ const styles = StyleSheet.create({
         color: BLACK,
         backgroundColor: backgroundColorCard,
     },
-    buttonBuy: {
-        width: SCREEN_WIDTH / 2,
-        alignSelf: 'center',
-        position: 'absolute',
-        bottom: SPACE_XXLARGE,
-        backgroundColor: BLUE,
-        paddingVertical: SPACE_SMALL,
-        borderRadius: RADIUS_SMALL,
-    },
-    titleItem: {
-        fontSize: FONT_LARGE,
-        paddingVertical: SPACE_MEDIUM,
-        color: BLACK,
+    box: {
+        flexGrow: 1,
     },
     descriptionItem: {
         fontSize: FONT_MEDIUM,
