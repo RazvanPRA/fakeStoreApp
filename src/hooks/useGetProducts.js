@@ -19,28 +19,27 @@ const useGetProducts = () => {
         },
     ];
 
-    const filterProducts =
-        (!!searchTerm &&
-            !!products?.length &&
-            products.filter(item => item?.title?.indexOf(searchTerm) !== -1)) ||
-        products;
+    const filterProducts = (!!searchTerm
+        && !!products?.length
+        && products.filter((item) => item?.title?.indexOf(searchTerm) !== -1))
+        || products;
 
     useEffect(() => {
         const endPoint = selectedCategory
             ? `https://fakestoreapi.com/products/category/${selectedCategory}?sort=${selectedSort}`
             : `https://fakestoreapi.com/products?sort=${selectedSort}`;
         fetch(endPoint)
-            .then(response => response.json())
-            .then(json => setProducts(json))
-            .catch(error => console.log(error))
+            .then((response) => response.json())
+            .then((json) => setProducts(json))
+            .catch((error) => console.log(error))
             .finally(() => setLoading(false));
     }, [selectedCategory, selectedSort]);
 
     useEffect(() => {
         fetch('https://fakestoreapi.com/products/categories')
-            .then(response => response.json())
-            .then(json => setCategories(json))
-            .catch(error => console.log(error));
+            .then((response) => response.json())
+            .then((json) => setCategories(json))
+            .catch((error) => console.log(error));
     }, []);
 
     return {

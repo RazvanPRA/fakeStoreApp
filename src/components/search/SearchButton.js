@@ -1,16 +1,18 @@
-import { StyleSheet, Text, Pressable, Modal, View, Alert } from 'react-native';
-import React, { useState } from 'react';
-import { BLACK, BLACK_TRANSPARENT, LIGHT_BLUE, WHITE } from '../../const/COLORS';
+import {
+    StyleSheet, Text, Pressable, Modal, View, Alert,
+} from 'react-native';
+import React from 'react';
+import {
+    BLACK, BLACK_TRANSPARENT, LIGHT_BLUE, WHITE,
+} from '../../const/COLORS';
 import {
     FONT_LARGE,
     FONT_XLARGE,
-    RADIUS_MEDIUM,
     RADIUS_SMALL,
     RADIUS_XSMALL,
     SPACE_LARGE,
     SPACE_SMALL,
     SPACE_XSMALL,
-    SPACE_XXLARGE,
 } from '../../const/LAYOUT';
 import { SORT_FILTER_TITLE, DONE } from '../../const/CONTENT/HomeContent';
 import RadioButton from './RadioButton';
@@ -26,58 +28,54 @@ const SearchButton = ({
     sortList,
     selectedSort,
     setSelectedSort,
-}) => {
-    return (
-        <Pressable onPress={onPress} style={styles.button}>
-            <Modal
-                animationType="slide"
-                transparent={true}
-                visible={modalVisible}
-                onRequestClose={() => {
-                    Alert.alert('Modal has been closed.');
-                    setModalVisible(!modalVisible);
-                }}>
-                <View style={styles.centeredView}>
-                    <View style={styles.modalView}>
-                        <Text style={styles.modalTitle}>{SORT_FILTER_TITLE}</Text>
-                        {!!categories?.length &&
-                            categories?.map(item => {
-                                return (
-                                    <RadioButton
-                                        key={item}
-                                        item={item}
-                                        title={item}
-                                        setSelected={setSelectedCategory}
-                                        selected={selectedCategory}
-                                    />
-                                );
-                            })}
-                        {!!sortList?.length &&
-                            sortList?.map(({ value, display }) => {
-                                return (
-                                    <RadioButton
-                                        key={value}
-                                        item={value}
-                                        title={display}
-                                        setSelected={setSelectedSort}
-                                        selected={selectedSort}
-                                    />
-                                );
-                            })}
-                        <Pressable
-                            onPress={() => {
-                                setModalVisible(!modalVisible);
-                            }}
-                            style={styles.doneButton}>
-                            <Text style={styles.textDone}>{DONE}</Text>
-                        </Pressable>
-                    </View>
+}) => (
+    <Pressable onPress={onPress} style={styles.button}>
+        <Modal
+            animationType="slide"
+            transparent
+            visible={modalVisible}
+            onRequestClose={() => {
+                Alert.alert('Modal has been closed.');
+                setModalVisible(!modalVisible);
+            }}
+        >
+            <View style={styles.centeredView}>
+                <View style={styles.modalView}>
+                    <Text style={styles.modalTitle}>{SORT_FILTER_TITLE}</Text>
+                    {!!categories?.length
+                        && categories?.map((item) => (
+                            <RadioButton
+                                key={item}
+                                item={item}
+                                title={item}
+                                setSelected={setSelectedCategory}
+                                selected={selectedCategory}
+                            />
+                        ))}
+                    {!!sortList?.length
+                        && sortList?.map(({ value, display }) => (
+                            <RadioButton
+                                key={value}
+                                item={value}
+                                title={display}
+                                setSelected={setSelectedSort}
+                                selected={selectedSort}
+                            />
+                        ))}
+                    <Pressable
+                        onPress={() => {
+                            setModalVisible(!modalVisible);
+                        }}
+                        style={styles.doneButton}
+                    >
+                        <Text style={styles.textDone}>{DONE}</Text>
+                    </Pressable>
                 </View>
-            </Modal>
-            <Text style={styles.text}>{title}</Text>
-        </Pressable>
-    );
-};
+            </View>
+        </Modal>
+        <Text style={styles.text}>{title}</Text>
+    </Pressable>
+);
 
 export default SearchButton;
 

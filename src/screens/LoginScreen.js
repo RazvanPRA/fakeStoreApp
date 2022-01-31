@@ -34,7 +34,9 @@ const LoginScreen = () => {
     });
 
     const passRef = useRef();
-    const { logIn, isLoading, loginError, setLoginError } = useAuthentication();
+    const {
+        logIn, isLoading, loginError, setLoginError,
+    } = useAuthentication();
     return (
         <View style={styles.contentWelcome}>
             <View style={styles.containerImage}>
@@ -46,7 +48,7 @@ const LoginScreen = () => {
             <View>
                 <TextInput
                     style={styles.input}
-                    onChangeText={text => {
+                    onChangeText={(text) => {
                         setUserData({
                             ...userData,
                             username: text,
@@ -65,7 +67,7 @@ const LoginScreen = () => {
                 />
                 <TextInput
                     style={styles.input}
-                    onChangeText={text => {
+                    onChangeText={(text) => {
                         setUserData({
                             ...userData,
                             password: text,
@@ -91,7 +93,8 @@ const LoginScreen = () => {
                 onPress={() => {
                     logIn(userData);
                 }}
-                style={styles.singUp}>
+                style={styles.singUp}
+            >
                 {isLoading ? (
                     <ActivityIndicator color={BLACK} />
                 ) : (

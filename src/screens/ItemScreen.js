@@ -6,20 +6,17 @@ import {
     StyleSheet,
     Text,
     View,
-    ViewPropTypes,
 } from 'react-native';
 import {
     backgroundColorCard,
     BLACK,
     BLUE,
-    textColor,
     WHITE,
 } from '../const/COLORS';
 import { MAX_RATE } from '../const/CONTENT/ItemContent';
 import {
     FONT_LARGE,
     FONT_MEDIUM,
-    FONT_XLARGE,
     RADIUS_SMALL,
     SCREEN_WIDTH,
     SPACE_LARGE,
@@ -29,8 +26,9 @@ import {
 } from '../const/LAYOUT';
 
 const ItemScreen = ({ navigation, route }) => {
-    const { id, title, price, description, category, image, rate, count } =
-        route.params;
+    const {
+        title, price, description, category, image, rate, count,
+    } = route.params;
     useEffect(() => {
         navigation.setOptions({
             title: 'Back',
@@ -39,7 +37,8 @@ const ItemScreen = ({ navigation, route }) => {
     return (
         <ScrollView
             style={styles.scrollView}
-            contentContainerStyle={styles.contentContainer}>
+            contentContainerStyle={styles.contentContainer}
+        >
             <View style={styles.backgroundColorImage} />
             <Image
                 style={styles.itemScreenImage}
@@ -50,9 +49,16 @@ const ItemScreen = ({ navigation, route }) => {
             <View style={styles.imageBox}>
                 <View style={styles.rateAndCounter}>
                     <Text style={styles.imageTextTop}>
-                        {rate}/{MAX_RATE}
+                        {rate}
+                        /
+                        {MAX_RATE}
                     </Text>
-                    <Text style={styles.imageTextTop}>({count} reviews)</Text>
+                    <Text style={styles.imageTextTop}>
+                        (
+                        {count}
+                        {' '}
+                        reviews)
+                    </Text>
                 </View>
                 <View style={styles.category}>
                     <Text style={styles.imageTextBottom}>{category}</Text>
@@ -63,7 +69,12 @@ const ItemScreen = ({ navigation, route }) => {
                 <Text style={styles.descriptionItem}>{description}</Text>
             </View>
             <Pressable style={styles.buttonBuy}>
-                <Text style={styles.textBuy}>$ {price} - Buy now</Text>
+                <Text style={styles.textBuy}>
+                    $
+                    {price}
+                    {' '}
+                    - Buy now
+                </Text>
             </Pressable>
         </ScrollView>
     );

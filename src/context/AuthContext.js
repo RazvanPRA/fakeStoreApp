@@ -11,7 +11,8 @@ export const AuthProvider = ({ children }) => {
             value={{
                 isLoggedIn,
                 setIsLoggedIn,
-            }}>
+            }}
+        >
             {children}
         </Provider>
     );

@@ -1,5 +1,7 @@
 import React from 'react';
-import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
+import {
+    Image, Pressable, StyleSheet, Text, View,
+} from 'react-native';
 import BackgroundImage from '../assets/Image.jpg';
 import { backgroundColorCard, BLACK } from '../const/COLORS';
 import { SING_IN } from '../const/CONTENT/LogInContent';
@@ -13,26 +15,25 @@ import {
     SPACE_XXLARGE,
 } from '../const/LAYOUT';
 
-const WelcomeScreen = ({ navigation }) => {
-    return (
-        <View style={styles.contentWelcome}>
-            <View style={styles.containerImage}>
-                <Image style={styles.backgroundImage} source={BackgroundImage} />
-            </View>
-            <View />
-            <View>
-                <Text style={styles.welcomeText}>Welcome to the STORE</Text>
-            </View>
-            <Pressable
-                onPress={() => {
-                    navigation.navigate('LoginScreen');
-                }}
-                style={styles.singUp}>
-                <Text style={styles.singUpText}>{SING_IN}</Text>
-            </Pressable>
+const WelcomeScreen = ({ navigation }) => (
+    <View style={styles.contentWelcome}>
+        <View style={styles.containerImage}>
+            <Image style={styles.backgroundImage} source={BackgroundImage} />
         </View>
-    );
-};
+        <View />
+        <View>
+            <Text style={styles.welcomeText}>Welcome to the STORE</Text>
+        </View>
+        <Pressable
+            onPress={() => {
+                navigation.navigate('LoginScreen');
+            }}
+            style={styles.singUp}
+        >
+            <Text style={styles.singUpText}>{SING_IN}</Text>
+        </Pressable>
+    </View>
+);
 
 export default WelcomeScreen;
 

@@ -1,4 +1,6 @@
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import {
+    Pressable, StyleSheet, Text, View,
+} from 'react-native';
 import React from 'react';
 import { LIGHT_BLUE } from '../../const/COLORS';
 import {
@@ -9,29 +11,30 @@ import {
     SPACE_XXLARGE,
 } from '../../const/LAYOUT';
 
-const RadioButton = ({ item, title, setSelected, selected }) => {
-    return (
-        <Pressable
-            onPress={() => {
-                if (item === selected) {
-                    setSelected(null);
-                } else {
-                    setSelected(item);
-                }
-            }}
-            style={styles.filterButton}>
-            <View
-                style={[
-                    styles.radioButton,
-                    item === selected && {
-                        backgroundColor: LIGHT_BLUE,
-                    },
-                ]}
-            />
-            <Text style={styles.filterButtonText}>{title}</Text>
-        </Pressable>
-    );
-};
+const RadioButton = ({
+    item, title, setSelected, selected,
+}) => (
+    <Pressable
+        onPress={() => {
+            if (item === selected) {
+                setSelected(null);
+            } else {
+                setSelected(item);
+            }
+        }}
+        style={styles.filterButton}
+    >
+        <View
+            style={[
+                styles.radioButton,
+                item === selected && {
+                    backgroundColor: LIGHT_BLUE,
+                },
+            ]}
+        />
+        <Text style={styles.filterButtonText}>{title}</Text>
+    </Pressable>
+);
 
 export default RadioButton;
 

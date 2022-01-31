@@ -4,14 +4,12 @@ import { BLACK_TRANSPARENT } from '../const/COLORS';
 import { SPACE_LARGE, SPACE_MEDIUM, SPACE_XXLARGE } from '../const/LAYOUT';
 import { SUB_TITLE, TITLE } from '../const/CONTENT/HomeContent';
 
-const HeadersComponent = () => {
-    return (
-        <View style={styles.contentHeader}>
-            <Text style={styles.title}>{TITLE}</Text>
-            <Text style={styles.subTitle}>{SUB_TITLE}</Text>
-        </View>
-    );
-};
+const HeadersComponent = () => (
+    <View style={styles.contentHeader}>
+        <Text style={styles.title}>{TITLE}</Text>
+        <Text style={styles.subTitle}>{SUB_TITLE}</Text>
+    </View>
+);
 
 export default HeadersComponent;
 
