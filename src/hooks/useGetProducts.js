@@ -24,7 +24,6 @@ const useGetProducts = () => {
             !!products?.length &&
             products.filter(item => item?.title?.indexOf(searchTerm) !== -1)) ||
         products;
-    console.log({ filterProducts });
 
     useEffect(() => {
         const endPoint = selectedCategory
@@ -44,7 +43,6 @@ const useGetProducts = () => {
             .catch(error => console.log(error));
     }, []);
 
-    console.log({ categories });
     return {
         products: filterProducts,
         searchTerm,

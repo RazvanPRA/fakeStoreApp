@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, TextInput } from 'react-native';
-import { PLACE_HOLDER } from '../const/CONTENT/HomeContent';
-import { SCREEN_WIDTH, SPACE_MEDIUM, SPACE_XLARGE } from '../const/LAYOUT';
+import { PLACE_HOLDER } from '../../const/CONTENT/HomeContent';
+import { SCREEN_WIDTH, SPACE_MEDIUM, SPACE_XLARGE } from '../../const/LAYOUT';
 import SearchButton from './SearchButton';
-import { SEARCH_TITLE, SORT_FILTER_TITLE } from '../const/CONTENT/HomeContent';
+import { SEARCH_TITLE, SORT_FILTER_TITLE } from '../../const/CONTENT/HomeContent';
 
 const SearchComponent = ({
     searchTerm,

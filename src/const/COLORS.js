@@ -4,3 +4,4 @@ export const WHITE = '#FFFFFF';
 export const BLUE = '#578BEE';
 export const backgroundColorCard = '#C4C4C4';
 export const LIGHT_BLUE = '#66A7D7';
+export const ERROR = '#CD4F4F80';

@@ -1,16 +1,13 @@
-import React from 'react';
 import type { Node } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import useAuthentication from './src/hooks/useAuthentication';
-import AppStack from './src/navigation/AppStack';
-import AuthStack from './src/navigation/AuthStack';
+import React from 'react';
+import { AuthProvider } from './src/context/AuthContext';
+import AppNavigator from './src/navigation/AppNavigator';
 
 const App: () => Node = () => {
-  const { isLoggedIn } = useAuthentication();
   return (
-    <NavigationContainer>
-      {!isLoggedIn ? <AppStack /> : <AuthStack />}
-    </NavigationContainer>
+    <AuthProvider>
+      <AppNavigator />
+    </AuthProvider>
   );
 };
 

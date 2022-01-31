@@ -1,5 +1,7 @@
 import React, { useRef, useState } from 'react';
 import {
+    ActivityIndicator,
+    ActivityIndicatorBase,
     Image,
     Pressable,
     StyleSheet,
@@ -9,15 +11,17 @@ import {
 } from 'react-native';
 import useAuthentication from '../hooks/useAuthentication';
 import BackgroundImage from '../assets/Image.jpg';
-import { backgroundColorCard, BLACK } from '../const/COLORS';
+import { backgroundColorCard, BLACK, ERROR } from '../const/COLORS';
 import { PASSWORD, SING_IN, USER_SING_IN } from '../const/CONTENT/LogInContent';
 import {
     FONT_XLARGE,
     FONT_XXLARGE,
     RADIUS_LARGE,
     RADIUS_SMALL,
+    RADIUS_XSMALL,
     SCREEN_HEIGHT,
     SCREEN_WIDTH,
+    SPACE_MEDIUM,
     SPACE_SMALL,
     SPACE_XSMALL,
     SPACE_XXLARGE,
@@ -29,10 +33,8 @@ const LoginScreen = () => {
         password: null,
     });
 
-    const emailRef = useRef();
     const passRef = useRef();
-    const { logIn } = useAuthentication();
-    console.log({ userData });
+    const { logIn, isLoading, loginError, setLoginError } = useAuthentication();
     return (
         <View style={styles.contentWelcome}>
             <View style={styles.containerImage}>
@@ -49,6 +51,7 @@ const LoginScreen = () => {
                             ...userData,
                             username: text,
                         });
+                        setLoginError(null);
                     }}
                     placeholder={USER_SING_IN}
                     autoCorrect={false}
@@ -67,20 +70,33 @@ const LoginScreen = () => {
                             ...userData,
                             password: text,
                         });
+                        setLoginError(null);
                     }}
                     placeholder={PASSWORD}
                     autoCorrect={false}
                     autoCapitalize="none"
                     secureTextEntry
-                    refField={passRef}
+                    ref={passRef}
+                    onSubmitEditing={() => {
+                        logIn(userData);
+                    }}
                 />
             </View>
+            {!!loginError && (
+                <View style={styles.errMsgBox}>
+                    <Text>{loginError}</Text>
+                </View>
+            )}
             <Pressable
                 onPress={() => {
                     logIn(userData);
                 }}
                 style={styles.singUp}>
-                <Text style={styles.singUpText}>{SING_IN}</Text>
+                {isLoading ? (
+                    <ActivityIndicator color={BLACK} />
+                ) : (
+                    <Text style={styles.singUpText}>{SING_IN}</Text>
+                )}
             </Pressable>
         </View>
     );
@@ -119,6 +135,13 @@ const styles = StyleSheet.create({
         marginVertical: SPACE_SMALL,
         borderRadius: RADIUS_SMALL,
         textAlign: 'center',
+    },
+    errMsgBox: {
+        backgroundColor: ERROR,
+        alignSelf: 'center',
+        paddingVertical: SPACE_XSMALL,
+        paddingHorizontal: SPACE_MEDIUM,
+        borderRadius: RADIUS_XSMALL,
     },
     singUp: {
         alignSelf: 'center',

@@ -1,6 +1,6 @@
 import { StyleSheet, Text, Pressable, Modal, View, Alert } from 'react-native';
 import React, { useState } from 'react';
-import { BLACK, BLACK_TRANSPARENT, LIGHT_BLUE, WHITE } from '../const/COLORS';
+import { BLACK, BLACK_TRANSPARENT, LIGHT_BLUE, WHITE } from '../../const/COLORS';
 import {
     FONT_LARGE,
     FONT_XLARGE,
@@ -11,8 +11,9 @@ import {
     SPACE_SMALL,
     SPACE_XSMALL,
     SPACE_XXLARGE,
-} from '../const/LAYOUT';
-import { SORT_FILTER_TITLE, DONE } from '../const/CONTENT/HomeContent';
+} from '../../const/LAYOUT';
+import { SORT_FILTER_TITLE, DONE } from '../../const/CONTENT/HomeContent';
+import RadioButton from './RadioButton';
 
 const SearchButton = ({
     onPress,
@@ -42,47 +43,25 @@ const SearchButton = ({
                         {!!categories?.length &&
                             categories?.map(item => {
                                 return (
-                                    <Pressable
+                                    <RadioButton
                                         key={item}
-                                        onPress={() => {
-                                            if (item === selectedCategory) {
-                                                setSelectedCategory(null);
-                                            } else {
-                                                setSelectedCategory(item);
-                                            }
-                                        }}
-                                        style={styles.filterButton}>
-                                        <View
-                                            style={[
-                                                styles.radioButton,
-                                                item === selectedCategory && {
-                                                    backgroundColor: LIGHT_BLUE,
-                                                },
-                                            ]}
-                                        />
-                                        <Text style={styles.filterButtonText}>{item}</Text>
-                                    </Pressable>
+                                        item={item}
+                                        title={item}
+                                        setSelected={setSelectedCategory}
+                                        selected={selectedCategory}
+                                    />
                                 );
                             })}
                         {!!sortList?.length &&
                             sortList?.map(({ value, display }) => {
                                 return (
-                                    <Pressable
+                                    <RadioButton
                                         key={value}
-                                        onPress={() => {
-                                            setSelectedSort(value);
-                                        }}
-                                        style={styles.filterButton}>
-                                        <View
-                                            style={[
-                                                styles.radioButton,
-                                                value === selectedSort && {
-                                                    backgroundColor: LIGHT_BLUE,
-                                                },
-                                            ]}
-                                        />
-                                        <Text style={styles.filterButtonText}>{display}</Text>
-                                    </Pressable>
+                                        item={value}
+                                        title={display}
+                                        setSelected={setSelectedSort}
+                                        selected={selectedSort}
+                                    />
                                 );
                             })}
                         <Pressable
@@ -107,10 +86,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         backgroundColor: BLACK_TRANSPARENT,
         padding: SPACE_XSMALL,
-    },
-    text: {
-        textAlign: 'center',
-        color: WHITE,
     },
     centeredView: {
         flex: 1,
@@ -137,21 +112,6 @@ const styles = StyleSheet.create({
         fontSize: FONT_XLARGE,
         marginBottom: SPACE_SMALL,
     },
-    filterButton: {
-        flexDirection: 'row',
-        marginVertical: SPACE_XSMALL,
-    },
-    radioButton: {
-        borderColor: LIGHT_BLUE,
-        borderWidth: 1,
-        height: SPACE_XXLARGE,
-        aspectRatio: 1,
-        borderRadius: RADIUS_MEDIUM,
-        marginRight: SPACE_SMALL,
-    },
-    filterButtonText: {
-        fontSize: FONT_LARGE,
-    },
     doneButton: {
         height: 50,
         borderRadius: 25,
@@ -162,6 +122,10 @@ const styles = StyleSheet.create({
     textDone: {
         textAlign: 'center',
         fontSize: FONT_LARGE,
+        color: WHITE,
+    },
+    text: {
+        textAlign: 'center',
         color: WHITE,
     },
 });

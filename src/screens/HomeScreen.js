@@ -1,7 +1,7 @@
 import { StyleSheet, View } from 'react-native';
 import React from 'react';
 import HeadersComponent from '../components/HeadersComponent';
-import SearchComponent from '../components/SearchComponent';
+import SearchComponent from '../components/search/SearchComponent';
 import ContentComponent from '../components/ContentComponent';
 import useGetProducts from '../hooks/useGetProducts';
 
