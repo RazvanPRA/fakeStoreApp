@@ -5,7 +5,7 @@ import SearchComponent from '../components/search/SearchComponent';
 import ContentComponent from '../components/ContentComponent';
 import useGetProducts from '../hooks/useGetProducts';
 
-const HomeScreen = ({ navigation }) => {
+const HomeScreen = () => {
     const {
         products,
         searchTerm,
@@ -35,7 +35,6 @@ const HomeScreen = ({ navigation }) => {
             <ContentComponent
                 loading={loading}
                 products={products}
-                navigation={navigation}
             />
         </View>
     );

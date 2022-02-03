@@ -2,6 +2,7 @@ import {
     Image, Pressable, StyleSheet, Text, View,
 } from 'react-native';
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 import {
     FONT_MEDIUM,
     RADIUS_MEDIUM,
@@ -11,46 +12,37 @@ import {
 import { backgroundColorCard } from '../const/COLORS';
 
 const ItemCard = ({
-    navigation,
-    itemId,
+    id,
     title,
     price,
-    description,
-    category,
     image,
-    rate,
-    count,
-}) => (
-    <View style={styles.container}>
-        <Pressable
-            onPress={() => {
-                navigation.navigate('ItemScreen', {
-                    id: itemId,
-                    title,
-                    price,
-                    description,
-                    category,
-                    image,
-                    rate,
-                    count,
-                });
-            }}
-            style={styles.content}
-        >
-            <View style={styles.imageContainer}>
-                <Image
-                    style={styles.image}
-                    source={{
-                        uri: image,
-                    }}
-                />
-            </View>
-            <Text style={styles.title}>
-                {`$ ${price} - ${title}`}
-            </Text>
-        </Pressable>
-    </View>
-);
+}) => {
+    const { navigate } = useNavigation();
+    return (
+        <View style={styles.container}>
+            <Pressable
+                onPress={() => {
+                    navigate('ItemScreen', {
+                        id,
+                    });
+                }}
+                style={styles.content}
+            >
+                <View style={styles.imageContainer}>
+                    <Image
+                        style={styles.image}
+                        source={{
+                            uri: image,
+                        }}
+                    />
+                </View>
+                <Text style={styles.title}>
+                    {`$ ${price} - ${title}`}
+                </Text>
+            </Pressable>
+        </View>
+    );
+};
 
 export default ItemCard;
 

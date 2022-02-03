@@ -9,7 +9,7 @@ import useAuthentication from '../hooks/useAuthentication';
 import BackgroundImage from '../assets/Image.jpg';
 import { backgroundColorCard, BLACK, ERROR } from '../const/COLORS';
 import {
-    PASSWORD, SING_IN, USER_SING_IN, WELCOME_TITLE,
+    PASSWORD, SIGN_IN, USER_SIGN_IN, WELCOME_TITLE,
 } from '../const/CONTENT/LogInContent';
 import {
     FONT_LARGE,
@@ -30,7 +30,6 @@ const LoginScreen = () => {
         username: null,
         password: null,
     });
-
     const passRef = useRef();
     const {
         logIn, isLoading, loginError, setLoginError,
@@ -46,14 +45,14 @@ const LoginScreen = () => {
             <View>
                 <LogInInput
                     onChangeText={(text) => {
-                        setUserData({
-                            ...userData,
+                        setUserData((prevUserData) => ({
+                            ...prevUserData,
                             username: text,
-                        });
+                        }));
                         setLoginError(null);
                     }}
                     autoCapitalize="none"
-                    placeholder={USER_SING_IN}
+                    placeholder={USER_SIGN_IN}
                     keyboardType="email-address"
                     onSubmitEditing={() => {
                         passRef.current.focus();
@@ -64,10 +63,10 @@ const LoginScreen = () => {
                 <LogInInput
                     inputRef={passRef}
                     onChangeText={(text) => {
-                        setUserData({
-                            ...userData,
+                        setUserData((prevUserData) => ({
+                            ...prevUserData,
                             password: text,
-                        });
+                        }));
                         setLoginError(null);
                     }}
                     placeholder={PASSWORD}
@@ -89,7 +88,7 @@ const LoginScreen = () => {
                     logIn(userData);
                 }}
                 isLoading={isLoading}
-                title={SING_IN}
+                title={SIGN_IN}
                 style={styles.button}
             />
         </View>

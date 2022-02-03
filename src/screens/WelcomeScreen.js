@@ -5,7 +5,7 @@ import {
 import BackgroundImage from '../assets/Image.jpg';
 import ActionButton from '../components/ActionButton';
 import { backgroundColorCard, BLACK } from '../const/COLORS';
-import { SING_IN, WELCOME_TITLE } from '../const/CONTENT/LogInContent';
+import { SIGN_IN, WELCOME_TITLE } from '../const/CONTENT/LogInContent';
 import {
     FONT_XXLARGE,
     SCREEN_HEIGHT,
@@ -26,7 +26,7 @@ const WelcomeScreen = ({ navigation }) => (
             onPress={() => {
                 navigation.navigate('LoginScreen');
             }}
-            title={SING_IN}
+            title={SIGN_IN}
             style={styles.button}
         />
     </View>

@@ -11,7 +11,7 @@ import { EMPTY_STATE } from '../const/CONTENT/HomeContent';
 import { SPACE_LARGE, SPACE_SMALL } from '../const/LAYOUT';
 import ItemCard from './ItemCard';
 
-const ContentComponent = ({ navigation, products, loading }) => (
+const ContentComponent = ({ products, loading }) => (
     <View style={styles.content}>
         {loading ? (
             <ActivityIndicator color={BLACK_TRANSPARENT} />
@@ -29,15 +29,10 @@ const ContentComponent = ({ navigation, products, loading }) => (
                 keyExtracto={(item) => item?.id}
                 renderItem={({ item }) => (
                     <ItemCard
-                        itemId={item?.id}
+                        id={item?.id}
                         title={item?.title}
                         price={item?.price}
-                        description={item?.description}
-                        category={item?.category}
                         image={item?.image}
-                        rate={item?.rating?.rate}
-                        count={item?.rating?.count}
-                        navigation={navigation}
                     />
                 )}
             />
